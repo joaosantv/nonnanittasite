@@ -89,7 +89,8 @@ header {
     align-items: center;
     text-align: center;
     color: white;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/333/FFF?text=Ambiente+Aconchegante') no-repeat center center/cover;
+    /* A MUDANÇA ESTÁ AQUI 👇 */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/fundocafeteria.jpg') no-repeat center center/cover;
 }
 
 .hero h1 {

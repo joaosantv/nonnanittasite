@@ -38,7 +38,7 @@
             </div>
         </section>
 
-        <!-- SEÇÃO GALERIA -->
+        <!-- SEÇÃO GALERIA E MENU -->
         <section id="galeria" class="section-padding">
             <h2>Menu & Galeria</h2>
             <p class="section-subtitle">Um pouco do nosso cantinho e das nossas delícias.</p>
@@ -59,7 +59,7 @@
                     <img src="images/cappuccino.jpg" alt="Cappuccino Cremoso">
                     <h3>Cappuccino Nonna</h3>
                     <p>Cremoso, com um toque de canela e chocolate.</p>
-                     <div class="item-compra">
+                      <div class="item-compra">
                         <span class="preco">R$ 9,50</span>
                         <button class="btn-add" data-id="2" data-nome="Cappuccino Nonna" data-preco="9.50">Adicionar</button>
                     </div>
@@ -103,6 +103,28 @@
                 </div>
             </div>
 
+            <!-- Categoria de Bebidas -->
+            <h3 class="categoria-titulo">Bebidas</h3>
+            <div class="cardapio-container">
+                <div class="cardapio-item">
+                    <img src="images/sucolaranja.jpg" alt="Suco de Laranja">
+                    <h3>Suco de Laranja Natural</h3>
+                    <p>Feito com laranjas frescas, espremidas na hora.</p>
+                    <div class="item-compra">
+                        <span class="preco">R$ 8,00</span>
+                        <button class="btn-add" data-id="6" data-nome="Suco de Laranja" data-preco="8.00">Adicionar</button>
+                    </div>
+                </div>
+                 <div class="cardapio-item">
+                    <img src="images/sodaitaliana.jpg" alt="Soda Italiana">
+                    <h3>Soda Italiana</h3>
+                    <p>Refrescante, com xarope de frutas e água com gás.</p>
+                      <div class="item-compra">
+                        <span class="preco">R$ 11,00</span>
+                        <button class="btn-add" data-id="7" data-nome="Soda Italiana" data-preco="11.00">Adicionar</button>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- SEÇÃO PEDIDO PARA RETIRADA -->
@@ -125,7 +147,7 @@
                 <label for="nome-pedido">Seu Nome:</label>
                 <input type="text" id="nome-pedido" name="Nome" required>
                 <label for="telefone-pedido">Telefone (WhatsApp):</label>
-                <input type="tel" id="telefone-pedido" name="Telefone" required>
+                <input type="text" id="telefone-pedido" name="Telefone" required>
                 <input type="hidden" id="itens-pedido" name="Itens do Pedido">
                 <input type="hidden" id="total-pedido" name="Total do Pedido">
                 <button type="submit" class="btn">Enviar Pedido para Confirmação</button>
@@ -133,7 +155,7 @@
             <div id="pedido-feedback" class="feedback-message"></div>
         </section>
         
-        <!-- SEÇÃO RESERVAS (RESTAURADA) -->
+        <!-- SEÇÃO RESERVAS -->
         <section id="reservas" class="section-padding">
             <h2>Faça a Sua Reserva</h2>
             <p class="section-subtitle">Garanta o seu lugar e aproveite a Nonnanitta sem preocupações.</p>
@@ -160,10 +182,10 @@
             <div id="reserva-feedback" class="feedback-message"></div>
         </section>
         
-        <!-- SEÇÃO SOBRE NÓS (RESTAURADA) -->
+        <!-- SEÇÃO SOBRE NÓS -->
         <section id="sobre" class="section-padding sobre-section">
             <div class="sobre-imagem">
-                <img src="https://placehold.co/600x400/6F4E37/FFF?text=Nossa+História" alt="Detalhe do ambiente da cafetaria">
+                <img src="images/fundodocafe.jpg" alt="Detalhe do ambiente da cafetaria">
             </div>
             <div class="sobre-texto">
                 <h2>Nossa História</h2>
@@ -171,14 +193,32 @@
             </div>
         </section>
         
-        <!-- SEÇÃO CONTATO (RESTAURADA) -->
+        <!-- SEÇÃO CONTATO (ATUALIZADA) -->
         <section id="contato" class="section-padding">
             <h2>Encontre-nos</h2>
             <p class="section-subtitle">A sua próxima xícara espera por si.</p>
-            <div class="contato-info">
-                <p><strong>Endereço:</strong> Rua Tiradentes, 323 - Centro, Campo Belo</p>
-                <p><strong>Telefone:</strong> (35) 99999-8888</p>
-                <p><strong>Horário:</strong> De Segunda a Domingo, das 14:30h às 20h</p>
+            <div class="contato-container">
+                <div class="contato-imagem">
+                    <img src="images/fachada.jpg" alt="Fachada da Cafeteria Nonnanitta">
+                </div>
+                <div class="contato-mapa-info">
+                    <div class="contato-info">
+                        <p><strong>Endereço:</strong> Rua Tiradentes, 323 - Centro, Campo Belo</p>
+                        <p><strong>Telefone:</strong> (35) 99999-8888</p>
+                        <p><strong>Horário:</strong> De Segunda a Domingo, das 14:30h às 20h</p>
+                    </div>
+                    <div class="mapa-wrapper">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3704.13112128788!2d-45.27582238453488!3d-21.81363998557929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b4cb423a072089%3A0x831a2c3a5e8f5b8c!2sR.%20Tiradentes%2C%20323%20-%20Centro%2C%20Campo%20Belo%20-%20MG%2C%2037270-000!5e0!3m2!1spt-BR!2sbr!4v1663788573151!5m2!1spt-BR!2sbr" 
+                            width="100%" 
+                            height="300" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
