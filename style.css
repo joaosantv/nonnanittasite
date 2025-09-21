@@ -3,40 +3,39 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* Adiciona rolagem suave quando clicamos nos links do menu */
     scroll-behavior: smooth;
 }
 
 body {
-    /* Fontes que importamos do Google Fonts */
     font-family: 'Roboto', sans-serif;
-    background-color: #fdfaf6; /* Um branco-gelo bem suave */
+    background-color: #fdfaf6;
     color: #333;
 }
 
-h1, h2, .logo {
-    font-family: 'Playfair Display', serif; /* Fonte mais elegante para títulos */
+h1, h2, h3, .logo {
+    font-family: 'Playfair Display', serif;
 }
 
 .section-padding {
-    padding: 80px 5%; /* Espaçamento padrão para as seções */
+    padding: 80px 5%;
     text-align: center;
 }
 
 .section-subtitle {
     margin-bottom: 40px;
     color: #666;
+    font-size: 1.1rem;
 }
 
 /* ---- CABEÇALHO E NAVEGAÇÃO ---- */
 header {
-    background-color: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px); /* Efeito de vidro fosco */
+    background-color: rgba(253, 250, 246, 0.85);
+    backdrop-filter: blur(10px);
     padding: 1rem 5%;
-    position: fixed; /* Deixa o menu fixo no topo */
+    position: fixed;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
 }
 
 .navbar {
@@ -47,7 +46,7 @@ header {
 
 .logo {
     font-size: 1.8rem;
-    color: #6F4E37; /* Tom de marrom café */
+    color: #6F4E37;
     text-decoration: none;
 }
 
@@ -68,7 +67,6 @@ header {
     color: #6F4E37;
 }
 
-/* Esconde o menu hamburger em telas grandes */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -80,18 +78,18 @@ header {
     height: 3px;
     margin: 5px auto;
     background-color: #333;
+    transition: all 0.3s ease-in-out;
 }
 
 /* ---- SEÇÃO INÍCIO (HERO) ---- */
 .hero {
-    height: 100vh; /* Ocupa a altura inteira da tela */
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
-    /* IMPORTANTE: Coloque uma foto bonita da cafeteria aqui */
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/ambiente.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x1080/333/FFF?text=Ambiente+Aconchegante') no-repeat center center/cover;
 }
 
 .hero h1 {
@@ -112,16 +110,24 @@ header {
     border-radius: 5px;
     font-weight: 500;
     transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
 }
 
 .btn:hover {
     background-color: #5a3f2b;
 }
 
-/* ---- SEÇÃO CARDÁPIO ---- */
+/* ---- SEÇÃO GALERIA ---- */
+.categoria-titulo {
+    margin-top: 60px;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #333;
+}
+
 .cardapio-container {
     display: grid;
-    /* Cria 3 colunas em telas grandes, 2 em médias e 1 em pequenas */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 40px;
@@ -133,12 +139,14 @@ header {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     text-align: left;
+    display: flex;
+    flex-direction: column;
 }
 
 .cardapio-item img {
     width: 100%;
     height: 200px;
-    object-fit: cover; /* Garante que a imagem não distorça */
+    object-fit: cover;
     border-radius: 5px;
     margin-bottom: 15px;
 }
@@ -148,15 +156,105 @@ header {
     margin-bottom: 10px;
 }
 
-.cardapio-item .preco {
-    display: block;
-    margin-top: 15px;
+.cardapio-item p {
+    flex-grow: 1; /* Faz a descrição ocupar o espaço disponível */
+    margin-bottom: 15px;
+}
+
+.item-compra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Empurra para o final do card */
+}
+
+.item-compra .preco {
     font-weight: bold;
     font-size: 1.1rem;
     color: #333;
 }
 
-/* ---- SEÇÃO SOBRE ---- */
+.btn-add {
+    background-color: #8B4513;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-add:hover {
+    background-color: #6F4E37;
+}
+
+/* --- SEÇÃO PEDIDO E CARRINHO --- */
+.carrinho-container {
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    text-align: left;
+}
+
+#carrinho-items .carrinho-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+#carrinho-items .carrinho-item:last-child {
+    border-bottom: none;
+}
+
+.carrinho-total {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    text-align: right;
+}
+
+.form-pedido, .form-reserva {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-pedido label, .form-reserva label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-pedido input, .form-pedido textarea,
+.form-reserva input, .form-reserva textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #555;
+    background-color: #f9f9f9;
+}
+
+.form-pedido button, .form-reserva button {
+    margin-top: 20px;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    align-self: center;
+}
+
+/* --- SEÇÃO SOBRE --- */
 .sobre-section {
     display: flex;
     align-items: center;
@@ -165,7 +263,7 @@ header {
 }
 
 .sobre-imagem, .sobre-texto {
-    flex: 1; /* Faz com que ambos ocupem metade do espaço */
+    flex: 1;
 }
 
 .sobre-imagem img {
@@ -173,13 +271,33 @@ header {
     border-radius: 10px;
 }
 
-/* ---- SEÇÃO CONTATO ---- */
+/* --- SEÇÃO CONTATO --- */
 .contato-info {
     max-width: 500px;
     margin: 20px auto 0;
     line-height: 1.8;
     font-size: 1.1rem;
 }
+
+/* --- FEEDBACK MESSAGES --- */
+.feedback-message {
+    margin-top: 20px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.feedback-message.sucesso {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.feedback-message.erro {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
 
 /* ---- RODAPÉ ---- */
 footer {
@@ -193,7 +311,7 @@ footer {
 @media(max-width: 768px) {
     .nav-menu {
         position: fixed;
-        left: -100%; /* Esconde o menu fora da tela */
+        left: -100%;
         top: 70px;
         flex-direction: column;
         background-color: #fff;
@@ -204,7 +322,7 @@ footer {
     }
 
     .nav-menu.active {
-        left: 0; /* Traz o menu para a tela */
+        left: 0;
     }
 
     .nav-item {
@@ -212,7 +330,19 @@ footer {
     }
 
     .hamburger {
-        display: block; /* Mostra o menu hamburger */
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
 
     .hero h1 {
@@ -220,53 +350,7 @@ footer {
     }
 
     .sobre-section {
-        flex-direction: column; /* Coloca imagem e texto um em cima do outro */
+        flex-direction: column;
     }
 }
 
-/* ---- ESTILOS DO FORMULÁRIO DE RESERVA ---- */
-.form-reserva {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Espaçamento entre os campos */
-}
-
-.form-reserva label {
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 5px;
-    display: block;
-}
-
-.form-reserva input,
-.form-reserva textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    color: #555;
-    background-color: #f9f9f9;
-}
-
-.form-reserva input:focus,
-.form-reserva textarea:focus {
-    border-color: #6F4E37;
-    outline: none;
-    box-shadow: 0 0 5px rgba(111, 78, 55, 0.3);
-}
-
-.form-reserva button.btn {
-    margin-top: 20px;
-    padding: 15px 25px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    align-self: center; /* Centraliza o botão */
-}

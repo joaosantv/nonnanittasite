@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nonnanitta Café & Trattoria</title>
-    
     <link rel="stylesheet" href="style.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -18,109 +16,171 @@
             <a href="#" class="logo">Nonnanitta</a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#inicio" class="nav-link">Início</a></li>
-                <!-- ALTERADO AQUI -->
-                <li class="nav-item"><a href="#galeria" class="nav-link">Galeria</a></li>
+                <li class="nav-item"><a href="#galeria" class="nav-link">Menu & Galeria</a></li>
+                <li class="nav-item"><a href="#pedido" class="nav-link">Pedido para Retirada</a></li>
                 <li class="nav-item"><a href="#reservas" class="nav-link">Reservas</a></li>
                 <li class="nav-item"><a href="#sobre" class="nav-link">Nossa História</a></li>
                 <li class="nav-item"><a href="#contato" class="nav-link">Contato</a></li>
             </ul>
             <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <span class="bar"></span><span class="bar"></span><span class="bar"></span>
             </div>
         </nav>
     </header>
 
     <main>
+        <!-- SEÇÃO INÍCIO -->
         <section id="inicio" class="hero">
             <div class="hero-text">
                 <h1>Seu cantinho de paz, com sabor de casa.</h1>
-                <p>O melhor café, as melhores memórias. Venha nos visitar.</p>
-                <!-- ALTERADO AQUI -->
-                <a href="#galeria" class="btn">Ver Galeria</a>
+                <p>O melhor café, as melhores memórias. Venha nos visitar ou faça seu pedido para retirada.</p>
+                <a href="#galeria" class="btn">Ver Menu & Galeria</a>
             </div>
         </section>
 
-        <!-- ALTERADO AQUI -->
+        <!-- SEÇÃO GALERIA -->
         <section id="galeria" class="section-padding">
-            <h2>Nossa Galeria</h2>
-            <p class="section-subtitle">Sabores de casa, feitos com o coração.</p>
+            <h2>Menu & Galeria</h2>
+            <p class="section-subtitle">Um pouco do nosso cantinho e das nossas delícias.</p>
+            
+            <!-- Categoria de Cafés -->
+            <h3 class="categoria-titulo">Cafés Especiais</h3>
             <div class="cardapio-container">
                 <div class="cardapio-item">
                     <img src="images/espresso.jpg.jpg" alt="Café Espresso">
                     <h3>Espresso Tradicional</h3>
                     <p>O puro sabor do café italiano, forte e aromático.</p>
-                    <span class="preco">R$ 6,00</span>
+                    <div class="item-compra">
+                        <span class="preco">R$ 6,00</span>
+                        <button class="btn-add" data-id="1" data-nome="Espresso Tradicional" data-preco="6.00">Adicionar</button>
+                    </div>
                 </div>
-                <div class="cardapio-item">
+                 <div class="cardapio-item">
                     <img src="images/cappuccino.jpg" alt="Cappuccino Cremoso">
                     <h3>Cappuccino Nonna</h3>
                     <p>Cremoso, com um toque de canela e chocolate.</p>
-                    <span class="preco">R$ 9,50</span>
+                     <div class="item-compra">
+                        <span class="preco">R$ 9,50</span>
+                        <button class="btn-add" data-id="2" data-nome="Cappuccino Nonna" data-preco="9.50">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Categoria de Doces -->
+            <h3 class="categoria-titulo">Doces Artesanais</h3>
+            <div class="cardapio-container">
+                <div class="cardapio-item">
+                    <img src="images/bolocenoura.jpg" alt="Bolo de Cenoura">
+                    <h3>Bolo de Cenoura</h3>
+                    <p>Com cobertura de brigadeiro, fofinho e irresistível.</p>
+                    <div class="item-compra">
+                        <span class="preco">R$ 10,00</span>
+                        <button class="btn-add" data-id="3" data-nome="Bolo de Cenoura" data-preco="10.00">Adicionar</button>
+                    </div>
                 </div>
                 <div class="cardapio-item">
-                    <img src="images/croissant.jpg" alt="Croissant">
-                    <h3>Croissant de Amêndoas</h3>
-                    <p>Fresco, folhado e recheado com creme de amêndoas.</p>
-                    <span class="preco">R$ 12,00</span>
+                    <img src="images/tortamorango.jpg" alt="Torta de Morango">
+                    <h3>Torta de Morango</h3>
+                    <p>Uma fatia generosa da nossa famosa torta de morango.</p>
+                    <div class="item-compra">
+                        <span class="preco">R$ 12,50</span>
+                        <button class="btn-add" data-id="4" data-nome="Torta de Morango" data-preco="12.50">Adicionar</button>
+                    </div>
                 </div>
+            </div>
+            
+            <!-- Categoria de Salgados -->
+            <h3 class="categoria-titulo">Salgados</h3>
+            <div class="cardapio-container">
+                <div class="cardapio-item">
+                    <img src="images/paodequeijo.jpg" alt="Pão de Queijo">
+                    <h3>Pão de Queijo da Serra</h3>
+                    <p>A receita autêntica, quentinho e com muito queijo.</p>
+                    <div class="item-compra">
+                        <span class="preco">R$ 7,00</span>
+                        <button class="btn-add" data-id="5" data-nome="Pão de Queijo da Serra" data-preco="7.00">Adicionar</button>
+                    </div>
                 </div>
+            </div>
+
         </section>
 
+        <!-- SEÇÃO PEDIDO PARA RETIRADA -->
+        <section id="pedido" class="section-padding">
+            <h2>Pedido para Retirada</h2>
+            <p class="section-subtitle">Selecione os seus itens na galeria e finalize o seu pedido aqui.</p>
+            
+            <div class="carrinho-container">
+                <h3>Seu Carrinho</h3>
+                <div id="carrinho-items">
+                    <p class="carrinho-vazio">Seu carrinho está vazio.</p>
+                </div>
+                <div class="carrinho-total">
+                    <strong>Total: R$ <span id="carrinho-total-valor">0.00</span></strong>
+                </div>
+            </div>
+
+            <form action="https://nonnanitta.onrender.com/pedidos" method="POST" class="form-pedido">
+                <h3>Seus Dados para Retirada</h3>
+                <label for="nome-pedido">Seu Nome:</label>
+                <input type="text" id="nome-pedido" name="Nome" required>
+                <label for="telefone-pedido">Telefone (WhatsApp):</label>
+                <input type="tel" id="telefone-pedido" name="Telefone" required>
+                <input type="hidden" id="itens-pedido" name="Itens do Pedido">
+                <input type="hidden" id="total-pedido" name="Total do Pedido">
+                <button type="submit" class="btn">Enviar Pedido para Confirmação</button>
+            </form>
+            <div id="pedido-feedback" class="feedback-message"></div>
+        </section>
+        
+        <!-- SEÇÃO RESERVAS (RESTAURADA) -->
         <section id="reservas" class="section-padding">
-            <h2>Faça Sua Reserva</h2>
-            <p class="section-subtitle">Garanta seu lugar e aproveite a Nonnanitta sem preocupações.</p>
-            
-            <p style="margin-bottom: 20px; font-style: italic;">
-                <strong>Atenção:</strong> Sua reserva está <strong>sujeita a confirmação</strong>. Nossa equipe verificará a disponibilidade e entrará em contato para confirmar.
+            <h2>Faça a Sua Reserva</h2>
+            <p class="section-subtitle">Garanta o seu lugar e aproveite a Nonnanitta sem preocupações.</p>
+            <p class="aviso-confirmacao">
+                <strong>Atenção:</strong> A sua reserva está <strong>sujeita a confirmação</strong>. A nossa equipa verificará a disponibilidade e entrará em contacto.
             </p>
-            
             <form action="https://nonnanitta.onrender.com/reservas" method="POST" class="form-reserva">
                 <label for="nome-reserva">Seu Nome:</label>
                 <input type="text" id="nome-reserva" name="Nome" required>
-
                 <label for="email-reserva">Seu E-mail:</label>
                 <input type="email" id="email-reserva" name="Email" required>
-
                 <label for="telefone-reserva">Telefone (WhatsApp):</label>
                 <input type="tel" id="telefone-reserva" name="Telefone" placeholder="(XX) XXXXX-XXXX" required>
-
                 <label for="data-reserva">Data da Reserva:</label>
                 <input type="date" id="data-reserva" name="Data da Reserva" required>
-
                 <label for="hora-reserva">Hora da Reserva:</label>
                 <input type="time" id="hora-reserva" name="Hora da Reserva" required>
-
                 <label for="pessoas-reserva">Número de Pessoas:</label>
                 <input type="number" id="pessoas-reserva" name="Numero de Pessoas" min="1" max="10" value="1" required>
-                
                 <label for="observacoes-reserva">Observações (opcional):</label>
                 <textarea id="observacoes-reserva" name="Observacoes" rows="3" placeholder="Ex: Preferência por mesa na janela"></textarea>
-
                 <button type="submit" class="btn">Solicitar Reserva</button>
             </form>
+            <div id="reserva-feedback" class="feedback-message"></div>
         </section>
-
+        
+        <!-- SEÇÃO SOBRE NÓS (RESTAURADA) -->
         <section id="sobre" class="section-padding sobre-section">
             <div class="sobre-imagem">
-                <img src="cafeteria/historia.jpg" alt="Detalhe do ambiente da cafeteria">
+                <img src="https://placehold.co/600x400/6F4E37/FFF?text=Nossa+História" alt="Detalhe do ambiente da cafetaria">
             </div>
             <div class="sobre-texto">
                 <h2>Nossa História</h2>
-                <p>Nascida do sonho da Vó Nitta em compartilhar o sabor da sua infância na Itália, a Nonnanitta é mais que um café, somos um lar. Cada receita carrega uma história, cada xícara é um abraço.</p>
+                <p>Nascida do sonho da Vó Nitta em partilhar o sabor da sua infância na Itália, a Nonnanitta é mais que um café, somos um lar. Cada receita carrega uma história, cada xícara é um abraço.</p>
             </div>
         </section>
-
+        
+        <!-- SEÇÃO CONTATO (RESTAURADA) -->
         <section id="contato" class="section-padding">
-            <h2>Nos Encontre</h2>
-            <p class="section-subtitle">Sua próxima xícara te espera.</p>
+            <h2>Encontre-nos</h2>
+            <p class="section-subtitle">A sua próxima xícara espera por si.</p>
             <div class="contato-info">
-                <p><strong>Endereço:</strong> Rua tiradentes, 323 - Centro, Campo Belo</p>
+                <p><strong>Endereço:</strong> Rua Tiradentes, 323 - Centro, Campo Belo</p>
                 <p><strong>Telefone:</strong> (35) 99999-8888</p>
                 <p><strong>Horário:</strong> De Segunda a Domingo, das 14:30h às 20h</p>
             </div>
-            </section>
+        </section>
     </main>
 
     <footer>
@@ -128,7 +188,6 @@
     </footer>
 
     <script src="script.js"></script>
-
 </body>
 </html>
 
