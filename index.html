@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nonnanitta Café & Trattoria</title>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">Nonnanitta</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#inicio" class="nav-link">Início</a></li>
+                <li class="nav-item"><a href="#cardapio" class="nav-link">Cardápio</a></li>
+                <li class="nav-item"><a href="#reservas" class="nav-link">Reservas</a></li>
+                <li class="nav-item"><a href="#sobre" class="nav-link">Nossa História</a></li>
+                <li class="nav-item"><a href="#contato" class="nav-link">Contato</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="hero-text">
+                <h1>Seu cantinho de paz, com sabor de casa.</h1>
+                <p>O melhor café, as melhores memórias. Venha nos visitar.</p>
+                <a href="#cardapio" class="btn">Ver Cardápio</a>
+            </div>
+        </section>
+
+        <section id="cardapio" class="section-padding">
+            <h2>Nosso Cardápio</h2>
+            <p class="section-subtitle">Sabores de casa, feitos com o coração.</p>
+            <div class="cardapio-container">
+                <div class="cardapio-item">
+                    <img src="images/espresso.jpg" alt="Café Espresso">
+                    <h3>Espresso Tradicional</h3>
+                    <p>O puro sabor do café italiano, forte e aromático.</p>
+                    <span class="preco">R$ 6,00</span>
+                </div>
+                <div class="cardapio-item">
+                    <img src="images/cappuccino.jpg" alt="Cappuccino Cremoso">
+                    <h3>Cappuccino Nonna</h3>
+                    <p>Cremoso, com um toque de canela e chocolate.</p>
+                    <span class="preco">R$ 9,50</span>
+                </div>
+                <div class="cardapio-item">
+                    <img src="images/croissant.jpg" alt="Croissant">
+                    <h3>Croissant de Amêndoas</h3>
+                    <p>Fresco, folhado e recheado com creme de amêndoas.</p>
+                    <span class="preco">R$ 12,00</span>
+                </div>
+                </div>
+        </section>
+
+        <section id="reservas" class="section-padding">
+            <h2>Faça Sua Reserva</h2>
+            <p class="section-subtitle">Garanta seu lugar e aproveite a Nonnanitta sem preocupações.</p>
+            
+            <p style="margin-bottom: 20px; font-style: italic;">
+                <strong>Atenção:</strong> Sua reserva está <strong>sujeita a confirmação</strong>. Nossa equipe verificará a disponibilidade e entrará em contato para confirmar.
+            </p>
+            
+            <form action="https://nonnanitta.onrender.com/reservas" method="POST" class="form-reserva">
+                <label for="nome-reserva">Seu Nome:</label>
+                <input type="text" id="nome-reserva" name="Nome" required>
+
+                <label for="email-reserva">Seu E-mail:</label>
+                <input type="email" id="email-reserva" name="Email" required>
+
+                <label for="telefone-reserva">Telefone (WhatsApp):</label>
+                <input type="tel" id="telefone-reserva" name="Telefone" placeholder="(XX) XXXXX-XXXX" required>
+
+                <label for="data-reserva">Data da Reserva:</label>
+                <input type="date" id="data-reserva" name="Data da Reserva" required>
+
+                <label for="hora-reserva">Hora da Reserva:</label>
+                <input type="time" id="hora-reserva" name="Hora da Reserva" required>
+
+                <label for="pessoas-reserva">Número de Pessoas:</label>
+                <input type="number" id="pessoas-reserva" name="Numero de Pessoas" min="1" max="10" value="1" required>
+                
+                <label for="observacoes-reserva">Observações (opcional):</label>
+                <textarea id="observacoes-reserva" name="Observacoes" rows="3" placeholder="Ex: Preferência por mesa na janela"></textarea>
+
+                <button type="submit" class="btn">Solicitar Reserva</button>
+            </form>
+        </section>
+
+        <section id="sobre" class="section-padding sobre-section">
+            <div class="sobre-imagem">
+                <img src="images/historia.jpg" alt="Detalhe do ambiente da cafeteria">
+            </div>
+            <div class="sobre-texto">
+                <h2>Nossa História</h2>
+                <p>Nascida do sonho da Vó Nitta em compartilhar o sabor da sua infância na Itália, a Nonnanitta é mais que um café, somos um lar. Cada receita carrega uma história, cada xícara é um abraço.</p>
+            </div>
+        </section>
+
+        <section id="contato" class="section-padding">
+            <h2>Nos Encontre</h2>
+            <p class="section-subtitle">Sua próxima xícara te espera.</p>
+            <div class="contato-info">
+                <p><strong>Endereço:</strong> Rua das Flores, 123 - Centro, Sua Cidade</p>
+                <p><strong>Telefone:</strong> (35) 99999-8888</p>
+                <p><strong>Horário:</strong> Ter a Dom, das 9h às 19h</p>
+            </div>
+            </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Nonnanitta Café & Trattoria. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

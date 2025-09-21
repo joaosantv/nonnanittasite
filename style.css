@@ -1,0 +1,272 @@
+/* ---- ESTILOS GERAIS E RESET ---- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Adiciona rolagem suave quando clicamos nos links do menu */
+    scroll-behavior: smooth;
+}
+
+body {
+    /* Fontes que importamos do Google Fonts */
+    font-family: 'Roboto', sans-serif;
+    background-color: #fdfaf6; /* Um branco-gelo bem suave */
+    color: #333;
+}
+
+h1, h2, .logo {
+    font-family: 'Playfair Display', serif; /* Fonte mais elegante para títulos */
+}
+
+.section-padding {
+    padding: 80px 5%; /* Espaçamento padrão para as seções */
+    text-align: center;
+}
+
+.section-subtitle {
+    margin-bottom: 40px;
+    color: #666;
+}
+
+/* ---- CABEÇALHO E NAVEGAÇÃO ---- */
+header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px); /* Efeito de vidro fosco */
+    padding: 1rem 5%;
+    position: fixed; /* Deixa o menu fixo no topo */
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    color: #6F4E37; /* Tom de marrom café */
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: #6F4E37;
+}
+
+/* Esconde o menu hamburger em telas grandes */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #333;
+}
+
+/* ---- SEÇÃO INÍCIO (HERO) ---- */
+.hero {
+    height: 100vh; /* Ocupa a altura inteira da tela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    /* IMPORTANTE: Coloque uma foto bonita da cafeteria aqui */
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/ambiente.jpg') no-repeat center center/cover;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    background-color: #6F4E37;
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #5a3f2b;
+}
+
+/* ---- SEÇÃO CARDÁPIO ---- */
+.cardapio-container {
+    display: grid;
+    /* Cria 3 colunas em telas grandes, 2 em médias e 1 em pequenas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.cardapio-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    text-align: left;
+}
+
+.cardapio-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Garante que a imagem não distorça */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.cardapio-item h3 {
+    color: #6F4E37;
+    margin-bottom: 10px;
+}
+
+.cardapio-item .preco {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/* ---- SEÇÃO SOBRE ---- */
+.sobre-section {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    text-align: left;
+}
+
+.sobre-imagem, .sobre-texto {
+    flex: 1; /* Faz com que ambos ocupem metade do espaço */
+}
+
+.sobre-imagem img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* ---- SEÇÃO CONTATO ---- */
+.contato-info {
+    max-width: 500px;
+    margin: 20px auto 0;
+    line-height: 1.8;
+    font-size: 1.1rem;
+}
+
+/* ---- RODAPÉ ---- */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* ---- RESPONSIVIDADE (PARA CELULARES) ---- */
+@media(max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%; /* Esconde o menu fora da tela */
+        top: 70px;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-menu.active {
+        left: 0; /* Traz o menu para a tela */
+    }
+
+    .nav-item {
+        margin: 2.5rem 0;
+    }
+
+    .hamburger {
+        display: block; /* Mostra o menu hamburger */
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .sobre-section {
+        flex-direction: column; /* Coloca imagem e texto um em cima do outro */
+    }
+}
+
+/* ---- ESTILOS DO FORMULÁRIO DE RESERVA ---- */
+.form-reserva {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre os campos */
+}
+
+.form-reserva label {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-reserva input,
+.form-reserva textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #555;
+    background-color: #f9f9f9;
+}
+
+.form-reserva input:focus,
+.form-reserva textarea:focus {
+    border-color: #6F4E37;
+    outline: none;
+    box-shadow: 0 0 5px rgba(111, 78, 55, 0.3);
+}
+
+.form-reserva button.btn {
+    margin-top: 20px;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    align-self: center; /* Centraliza o botão */
+}
