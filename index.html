@@ -47,7 +47,7 @@
             <h3 class="categoria-titulo">Cafés Especiais</h3>
             <div class="cardapio-container">
                 <div class="cardapio-item">
-                    <img src="images/espresso.jpg" alt="Café Espresso">
+                    <img src="images/espresso.jpg.jpg" alt="Café Espresso">
                     <h3>Espresso Tradicional</h3>
                     <p>O puro sabor do café italiano, forte e aromático.</p>
                     <div class="item-compra">
@@ -152,14 +152,12 @@
                 <input type="hidden" id="total-pedido" name="Total do Pedido">
                 <button type="submit" class="btn">Enviar Pedido para Confirmação</button>
             </form>
-            <!-- O feedback-message antigo foi removido, usaremos o modal -->
         </section>
         
         <!-- SEÇÃO RESERVAS -->
         <section id="reservas" class="section-padding">
             <h2>Faça a Sua Reserva</h2>
             <p class="section-subtitle">Garanta o seu lugar e aproveite a Nonnanitta sem preocupações.</p>
-            
             <form action="https://nonnanitta.onrender.com/reservas" method="POST" class="form-reserva">
                 <label for="nome-reserva">Seu Nome:</label>
                 <input type="text" id="nome-reserva" name="Nome" required>
@@ -177,36 +175,35 @@
                 <textarea id="observacoes-reserva" name="Observacoes" rows="3" placeholder="Ex: Preferência por mesa na janela"></textarea>
                 <button type="submit" class="btn">Solicitar Reserva</button>
             </form>
-             <!-- O feedback-message antigo foi removido, usaremos o modal -->
         </section>
         
         <!-- SEÇÃO SOBRE NÓS -->
         <section id="sobre" class="section-padding sobre-section">
             <div class="sobre-imagem">
-                <img src="images/fundodocafe.jpg" alt="Detalhe do ambiente da cafetaria">
+                <img src="images/fundodocafe.jpg" alt="Detalhe do ambiente da cafeteria">
             </div>
             <div class="sobre-texto">
                 <h2>Nossa História</h2>
-                <p>Nascida do sonho da Vó Nitta em partilhar o sabor da sua infância na Itália, a Nonnanitta é mais que um café, somos um lar. Cada receita carrega uma história, cada xícara é um abraço.</p>
+                <p>Nascida do sonho da Vó Nitta em compartilhar o sabor da sua infância na Itália, a Nonnanitta é mais que um café, somos um lar. Cada receita carrega uma história, cada xícara é um abraço.</p>
             </div>
         </section>
         
         <!-- SEÇÃO CONTATO -->
         <section id="contato" class="section-padding">
+            <h2>Encontre-nos</h2>
+            <p class="section-subtitle">A sua próxima xícara espera por si.</p>
             <div class="contato-container">
                 <div class="contato-imagem">
-                    <img src="images/frentecafeteria.jpg" alt="Frente da Cafeteria Nonnanitta">
+                    <img src="images/fachada.jpg" alt="Fachada da cafeteria Nonnanitta">
                 </div>
                 <div class="contato-direita">
-                    <h2>Encontre-nos</h2>
-                    <p class="section-subtitle">A sua próxima xícara espera por si.</p>
                     <div class="contato-info">
                         <p><strong>Endereço:</strong> Rua Tiradentes, 323 - Centro, Campo Belo</p>
                         <p><strong>Telefone:</strong> (35) 99999-8888</p>
                         <p><strong>Horário:</strong> De Segunda a Domingo, das 14:30h às 20h</p>
                     </div>
                     <div class="mapa-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3703.955009595886!2d-45.27555188505481!3d-21.82006398557551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b4cb4659f816c7%3A0x6b8a8b169c9b5f36!2sR.%20Tiradentes%2C%20323%20-%20Centro%2C%20Campo%20Belo%20-%20MG%2C%2037270-000!5e0!3m2!1spt-BR!2sbr!4v1663784185303!5m2!1spt-BR!2sbr" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3703.927233765931!2d-45.27785068550264!3d-21.82173190367987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b4e1a0b5f5e5e5%3A0x8e5e5e5e5e5e5e5e!2sPra%C3%A7a%20Monsenhor%20Jo%C3%A3o%20de%20Deus!5e0!3m2!1spt-BR!2sbr!4v1678886400000!5m2!1spt-BR!2sbr" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -217,12 +214,12 @@
         <p>&copy; 2025 Nonnanitta Café & Trattoria. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- JANELA MODAL DE FEEDBACK (NOVA) -->
+    <!-- ESTRUTURA DO MODAL (JANELA DE CONFIRMAÇÃO) -->
     <div id="modal-feedback" class="modal-backdrop">
         <div class="modal-conteudo">
             <h2 id="modal-titulo"></h2>
             <p id="modal-mensagem"></p>
-            <button id="modal-fechar" class="btn">Ok, entendi</button>
+            <button id="modal-fechar" class="btn">Fechar</button>
         </div>
     </div>
 

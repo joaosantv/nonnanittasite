@@ -57,22 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const formPedido = document.querySelector('.form-pedido');
-    if (formPedido) {
-        formPedido.addEventListener('submit', () => {
-            const itensPedidoInput = document.getElementById('itens-pedido');
-            const totalPedidoInput = document.getElementById('total-pedido');
-            let itensTexto = '';
-            for (const id in carrinho) {
-                const item = carrinho[id];
-                itensTexto += `${item.qtd}x ${item.nome}\n`;
-            }
-            itensPedidoInput.value = itensTexto.trim();
-            totalPedidoInput.value = `R$ ${carrinhoTotalEl.textContent}`;
-        });
-    }
-
-    // --- NOVA LÓGICA DO MODAL DE FEEDBACK ---
+    // --- LÓGICA DO MODAL DE FEEDBACK ---
     const modal = document.getElementById('modal-feedback');
     const modalTitulo = document.getElementById('modal-titulo');
     const modalMensagem = document.getElementById('modal-mensagem');
@@ -85,18 +70,17 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.classList.add('ativo');
         }
     }
-
+    
     function fecharModal() {
         if(modal) {
             modal.classList.remove('ativo');
         }
     }
-
+    
     if(modalFechar) {
         modalFechar.addEventListener('click', fecharModal);
     }
     if(modal){
-        // Fecha o modal se o usuário clicar fora da caixa de conteúdo
         modal.addEventListener('click', (e) => {
             if(e.target === modal) {
                 fecharModal();
@@ -104,33 +88,70 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Função que lê a URL e decide se deve mostrar o modal
-    function mostrarFeedback() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const feedbackReserva = urlParams.get('reserva');
-        const feedbackPedido = urlParams.get('pedido');
+    // --- LÓGICA DE ENVIO DOS FORMULÁRIOS (ATUALIZADA) ---
+    const formReserva = document.querySelector('.form-reserva');
+    const formPedido = document.querySelector('.form-pedido');
 
-        if (feedbackReserva) {
-            if (feedbackReserva === 'sucesso') {
-                abrirModal('Solicitação Recebida!', 'A sua solicitação de reserva foi enviada. Iremos analisar a disponibilidade e entraremos em contacto via WhatsApp para confirmar.');
-            } else if (feedbackReserva === 'erro') {
-                abrirModal('Ops! Horário Esgotado', 'Desculpe, não há mais vagas para este horário. Por favor, tente outro.');
-            }
-        }
+    if (formReserva) {
+        formReserva.addEventListener('submit', async (event) => {
+            event.preventDefault(); // Impede o envio padrão da página
+            const formData = new FormData(formReserva);
+            
+            try {
+                const response = await fetch(formReserva.action, {
+                    method: 'POST',
+                    body: new URLSearchParams(formData)
+                });
 
-        if (feedbackPedido) {
-            if (feedbackPedido === 'sucesso') {
-                abrirModal('Pedido Enviado!', 'O seu pedido foi enviado para a cafetaria. Iremos analisá-lo e entraremos em contacto via WhatsApp para confirmar a retirada.');
+                if (response.ok) {
+                    abrirModal('Solicitação Recebida!', 'Sua solicitação de reserva foi enviada. Iremos analisar a disponibilidade e entraremos em contato via WhatsApp para confirmar.');
+                    formReserva.reset(); // Limpa o formulário
+                } else {
+                    const errorData = await response.json();
+                    abrirModal('Ops! Horário Esgotado', errorData.message || 'Não foi possível completar sua reserva. Tente novamente.');
+                }
+            } catch (error) {
+                abrirModal('Erro de Conexão', 'Não foi possível conectar ao servidor. Verifique sua internet e tente novamente.');
             }
-        }
-        
-        // Limpa os parâmetros da URL para o modal não reaparecer ao recarregar a página
-        if(feedbackPedido || feedbackReserva){
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }
+        });
     }
 
-    // Chama a função de feedback assim que a página é carregada
-    mostrarFeedback();
+    if (formPedido) {
+        formPedido.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            
+            // Preenche os campos escondidos do carrinho antes de enviar
+            const itensPedidoInput = document.getElementById('itens-pedido');
+            const totalPedidoInput = document.getElementById('total-pedido');
+            let itensTexto = '';
+            for (const id in carrinho) {
+                const item = carrinho[id];
+                itensTexto += `${item.qtd}x ${item.nome}\n`;
+            }
+            itensPedidoInput.value = itensTexto.trim();
+            totalPedidoInput.value = `R$ ${carrinhoTotalEl.textContent}`;
+
+            const formData = new FormData(formPedido);
+            
+            try {
+                const response = await fetch(formPedido.action, {
+                    method: 'POST',
+                    body: new URLSearchParams(formData)
+                });
+
+                if (response.ok) {
+                    abrirModal('Pedido Enviado!', 'Seu pedido foi enviado para a cafeteria. Iremos analisá-lo e entraremos em contato via WhatsApp para confirmar a retirada.');
+                    formPedido.reset(); // Limpa o formulário
+                    // Limpa o carrinho visual
+                    for (const id in carrinho) { delete carrinho[id]; }
+                    atualizarCarrinho();
+                } else {
+                    abrirModal('Ops! Algo deu errado', 'Não foi possível completar seu pedido. Tente novamente.');
+                }
+            } catch (error) {
+                abrirModal('Erro de Conexão', 'Não foi possível conectar ao servidor. Verifique sua internet e tente novamente.');
+            }
+        });
+    }
 });
 
