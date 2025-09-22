@@ -118,6 +118,12 @@ header {
     background-color: #5a3f2b;
 }
 
+.btn:disabled {
+    background-color: #a08a7b;
+    cursor: not-allowed;
+}
+
+
 /* ---- SEÇÃO GALERIA ---- */
 .categoria-titulo {
     margin-top: 60px;
@@ -157,7 +163,7 @@ header {
 }
 
 .cardapio-item p {
-    flex-grow: 1; /* Faz a descrição ocupar o espaço disponível */
+    flex-grow: 1;
     margin-bottom: 15px;
 }
 
@@ -165,7 +171,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto; /* Empurra para o final do card */
+    margin-top: auto;
 }
 
 .item-compra .preco {
@@ -202,12 +208,18 @@ header {
 #carrinho-items .carrinho-item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid #f0f0f0;
 }
 
-#carrinho-items .carrinho-item:last-child {
-    border-bottom: none;
+.btn-remover {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 15px;
 }
 
 .carrinho-total {
@@ -288,7 +300,7 @@ header {
 .mapa-container {
     margin-top: 20px;
     border-radius: 10px;
-    overflow: hidden; /* Garante que o iframe respeite o border-radius */
+    overflow: hidden;
 }
 
 /* --- ESTILOS DO MODAL --- */
@@ -306,7 +318,7 @@ header {
 }
 
 .modal-backdrop.ativo {
-    display: flex; /* Classe que mostra o modal */
+    display: flex;
 }
 
 .modal-conteudo {
@@ -332,6 +344,57 @@ header {
 
 #modal-fechar {
     margin: 0;
+}
+
+/* --- ESTILOS DO TOAST --- */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    z-index: 3000;
+    font-size: 0.9rem;
+    opacity: 0;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 20px; opacity: 1;}
+}
+
+@keyframes fadeout {
+    from {bottom: 20px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+/* --- ESTILOS DO CARRINHO FLUTUANTE --- */
+.carrinho-flutuante-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #6F4E37;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 1500;
+    display: none; /* Começa escondido */
+    transition: transform 0.3s;
+}
+
+.carrinho-flutuante-btn.visivel {
+    display: block;
+}
+
+.carrinho-flutuante-btn:hover {
+    transform: scale(1.05);
 }
 
 

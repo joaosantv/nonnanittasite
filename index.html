@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- LINK PARA OS ÍCONES DO FONT AWESOME (NOVO) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
@@ -15,12 +17,13 @@
         <nav class="navbar">
             <a href="#" class="logo">Nonnanitta</a>
             <ul class="nav-menu">
-                <li class="nav-item"><a href="#inicio" class="nav-link">Início</a></li>
-                <li class="nav-item"><a href="#galeria" class="nav-link">Menu & Galeria</a></li>
-                <li class="nav-item"><a href="#pedido" class="nav-link">Pedido para Retirada</a></li>
-                <li class="nav-item"><a href="#reservas" class="nav-link">Reservas</a></li>
-                <li class="nav-item"><a href="#sobre" class="nav-link">Nossa História</a></li>
-                <li class="nav-item"><a href="#contato" class="nav-link">Contato</a></li>
+                <!-- ÍCONES ADICIONADOS AQUI 👇 -->
+                <li class="nav-item"><a href="#inicio" class="nav-link"><i class="fas fa-home"></i>Início</a></li>
+                <li class="nav-item"><a href="#galeria" class="nav-link"><i class="fas fa-images"></i>Menu & Galeria</a></li>
+                <li class="nav-item"><a href="#pedido" class="nav-link"><i class="fas fa-shopping-bag"></i>Pedido para Retirada</a></li>
+                <li class="nav-item"><a href="#reservas" class="nav-link"><i class="fas fa-calendar-check"></i>Reservas</a></li>
+                <li class="nav-item"><a href="#sobre" class="nav-link"><i class="fas fa-heart"></i>Nossa História</a></li>
+                <li class="nav-item"><a href="#contato" class="nav-link"><i class="fas fa-map-marker-alt"></i>Contato</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span><span class="bar"></span><span class="bar"></span>
@@ -47,7 +50,7 @@
             <h3 class="categoria-titulo">Cafés Especiais</h3>
             <div class="cardapio-container">
                 <div class="cardapio-item">
-                    <img src="images/espresso.jpg.jpg" alt="Café Espresso">
+                    <img src="images/espresso.jpg" alt="Café Espresso">
                     <h3>Espresso Tradicional</h3>
                     <p>O puro sabor do café italiano, forte e aromático.</p>
                     <div class="item-compra">
@@ -145,9 +148,14 @@
             <form action="https://nonnanitta.onrender.com/pedidos" method="POST" class="form-pedido">
                 <h3>Seus Dados para Retirada</h3>
                 <label for="nome-pedido">Seu Nome:</label>
-                <input type="text" id="nome-pedido" name="Nome" required>
+                <input type="text" id="nome-pedido" name="Nome" required minlength="3" placeholder="Digite seu nome completo">
+                
                 <label for="telefone-pedido">Telefone (WhatsApp):</label>
-                <input type="tel" id="telefone-pedido" name="Telefone" required>
+                <input type="tel" id="telefone-pedido" name="Telefone" required pattern="[0-9]{10,11}" placeholder="Apenas números (Ex: 35991234567)">
+
+                <label for="retirada-hora">Horário para Retirada:</label>
+                <input type="time" id="retirada-hora" name="Hora de Retirada" required min="14:30" max="19:30">
+                
                 <input type="hidden" id="itens-pedido" name="Itens do Pedido">
                 <input type="hidden" id="total-pedido" name="Total do Pedido">
                 <button type="submit" class="btn">Enviar Pedido para Confirmação</button>
@@ -160,17 +168,23 @@
             <p class="section-subtitle">Garanta o seu lugar e aproveite a Nonnanitta sem preocupações.</p>
             <form action="https://nonnanitta.onrender.com/reservas" method="POST" class="form-reserva">
                 <label for="nome-reserva">Seu Nome:</label>
-                <input type="text" id="nome-reserva" name="Nome" required>
+                <input type="text" id="nome-reserva" name="Nome" required minlength="3" placeholder="Digite seu nome completo">
+                
                 <label for="email-reserva">Seu E-mail:</label>
-                <input type="email" id="email-reserva" name="Email" required>
+                <input type="email" id="email-reserva" name="Email" required placeholder="seuemail@exemplo.com">
+                
                 <label for="telefone-reserva">Telefone (WhatsApp):</label>
-                <input type="tel" id="telefone-reserva" name="Telefone" placeholder="(XX) XXXXX-XXXX" required>
+                <input type="tel" id="telefone-reserva" name="Telefone" required pattern="[0-9]{10,11}" placeholder="Apenas números (Ex: 35991234567)">
+                
                 <label for="data-reserva">Data da Reserva:</label>
                 <input type="date" id="data-reserva" name="Data da Reserva" required>
+                
                 <label for="hora-reserva">Hora da Reserva:</label>
-                <input type="time" id="hora-reserva" name="Hora da Reserva" required>
+                <input type="time" id="hora-reserva" name="Hora da Reserva" required min="14:30" max="19:30">
+                
                 <label for="pessoas-reserva">Número de Pessoas:</label>
                 <input type="number" id="pessoas-reserva" name="Numero de Pessoas" min="1" max="10" value="1" required>
+                
                 <label for="observacoes-reserva">Observações (opcional):</label>
                 <textarea id="observacoes-reserva" name="Observacoes" rows="3" placeholder="Ex: Preferência por mesa na janela"></textarea>
                 <button type="submit" class="btn">Solicitar Reserva</button>
@@ -213,6 +227,11 @@
     <footer>
         <p>&copy; 2025 Nonnanitta Café & Trattoria. Todos os direitos reservados.</p>
     </footer>
+
+    <!-- BOTÃO FLUTUANTE DO CARRINHO -->
+    <a href="#pedido" id="carrinho-flutuante" class="carrinho-flutuante-btn">
+        🛒 Carrinho (0)
+    </a>
 
     <!-- ESTRUTURA DO MODAL (JANELA DE CONFIRMAÇÃO) -->
     <div id="modal-feedback" class="modal-backdrop">
