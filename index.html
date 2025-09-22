@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <!-- LINK PARA OS ÍCONES DO FONT AWESOME (NOVO) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
@@ -17,7 +16,6 @@
         <nav class="navbar">
             <a href="#" class="logo">Nonnanitta</a>
             <ul class="nav-menu">
-                <!-- ÍCONES ADICIONADOS AQUI 👇 -->
                 <li class="nav-item"><a href="#inicio" class="nav-link"><i class="fas fa-home"></i>Início</a></li>
                 <li class="nav-item"><a href="#galeria" class="nav-link"><i class="fas fa-images"></i>Menu & Galeria</a></li>
                 <li class="nav-item"><a href="#pedido" class="nav-link"><i class="fas fa-shopping-bag"></i>Pedido para Retirada</a></li>
@@ -41,15 +39,23 @@
             </div>
         </section>
 
-        <!-- SEÇÃO GALERIA E MENU -->
+        <!-- SEÇÃO GALERIA E MENU (ATUALIZADA) -->
         <section id="galeria" class="section-padding">
             <h2>Menu & Galeria</h2>
             <p class="section-subtitle">Um pouco do nosso cantinho e das nossas delícias.</p>
             
-            <!-- Categoria de Cafés -->
-            <h3 class="categoria-titulo">Cafés Especiais</h3>
+            <!-- MENU DE FILTROS (NOVO) -->
+            <div class="galeria-filtros">
+                <button class="filtro-btn active" data-filter="all">Todos</button>
+                <button class="filtro-btn" data-filter="cafes"><i class="fas fa-coffee"></i> Cafés</button>
+                <button class="filtro-btn" data-filter="doces"><i class="fas fa-birthday-cake"></i> Doces</button>
+                <button class="filtro-btn" data-filter="salgados"><i class="fas fa-bread-slice"></i> Salgados</button>
+                <button class="filtro-btn" data-filter="bebidas"><i class="fas fa-cocktail"></i> Bebidas</button>
+            </div>
+            
             <div class="cardapio-container">
-                <div class="cardapio-item">
+                <!-- Itens de Cafés -->
+                <div class="cardapio-item cafes">
                     <img src="images/espresso.jpg" alt="Café Espresso">
                     <h3>Espresso Tradicional</h3>
                     <p>O puro sabor do café italiano, forte e aromático.</p>
@@ -58,7 +64,7 @@
                         <button class="btn-add" data-id="1" data-nome="Espresso Tradicional" data-preco="6.00">Adicionar</button>
                     </div>
                 </div>
-                 <div class="cardapio-item">
+                 <div class="cardapio-item cafes">
                     <img src="images/cappuccino.jpg" alt="Cappuccino Cremoso">
                     <h3>Cappuccino Nonna</h3>
                     <p>Cremoso, com um toque de canela e chocolate.</p>
@@ -67,12 +73,9 @@
                         <button class="btn-add" data-id="2" data-nome="Cappuccino Nonna" data-preco="9.50">Adicionar</button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Categoria de Doces -->
-            <h3 class="categoria-titulo">Doces Artesanais</h3>
-            <div class="cardapio-container">
-                <div class="cardapio-item">
+                <!-- Itens de Doces -->
+                <div class="cardapio-item doces">
                     <img src="images/bolocenoura.jpg" alt="Bolo de Cenoura">
                     <h3>Bolo de Cenoura</h3>
                     <p>Com cobertura de brigadeiro, fofinho e irresistível.</p>
@@ -81,7 +84,7 @@
                         <button class="btn-add" data-id="3" data-nome="Bolo de Cenoura" data-preco="10.00">Adicionar</button>
                     </div>
                 </div>
-                <div class="cardapio-item">
+                <div class="cardapio-item doces">
                     <img src="images/tortamorango.jpg" alt="Torta de Morango">
                     <h3>Torta de Morango</h3>
                     <p>Uma fatia generosa da nossa famosa torta de morango.</p>
@@ -90,12 +93,9 @@
                         <button class="btn-add" data-id="4" data-nome="Torta de Morango" data-preco="12.50">Adicionar</button>
                     </div>
                 </div>
-            </div>
             
-            <!-- Categoria de Salgados -->
-            <h3 class="categoria-titulo">Salgados</h3>
-            <div class="cardapio-container">
-                <div class="cardapio-item">
+                <!-- Itens de Salgados -->
+                <div class="cardapio-item salgados">
                     <img src="images/paodequeijo.jpg" alt="Pão de Queijo">
                     <h3>Pão de Queijo da Serra</h3>
                     <p>A receita autêntica, quentinho e com muito queijo.</p>
@@ -104,12 +104,9 @@
                         <button class="btn-add" data-id="5" data-nome="Pão de Queijo da Serra" data-preco="7.00">Adicionar</button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Categoria de Bebidas -->
-            <h3 class="categoria-titulo">Bebidas</h3>
-            <div class="cardapio-container">
-                <div class="cardapio-item">
+                <!-- Itens de Bebidas -->
+                <div class="cardapio-item bebidas">
                     <img src="images/sucolaranja.jpg" alt="Suco de Laranja">
                     <h3>Suco de Laranja Natural</h3>
                     <p>Feito com laranjas frescas, espremidas na hora.</p>
@@ -118,7 +115,7 @@
                         <button class="btn-add" data-id="6" data-nome="Suco de Laranja" data-preco="8.00">Adicionar</button>
                     </div>
                 </div>
-                 <div class="cardapio-item">
+                 <div class="cardapio-item bebidas">
                     <img src="images/sodaitaliana.jpg" alt="Soda Italiana">
                     <h3>Soda Italiana</h3>
                     <p>Refrescante, com xarope de frutas e água com gás.</p>

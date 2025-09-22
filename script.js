@@ -16,6 +16,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }));
     }
 
+    // --- LÓGICA DA GALERIA INTERATIVA (NOVA) ---
+    const filtrosContainer = document.querySelector('.galeria-filtros');
+    const galeriaItems = document.querySelectorAll('.cardapio-item');
+
+    if (filtrosContainer && galeriaItems.length > 0) {
+        filtrosContainer.addEventListener('click', (event) => {
+            if (event.target.classList.contains('filtro-btn')) {
+                // Remove a classe 'active' de todos os botões
+                filtrosContainer.querySelector('.active').classList.remove('active');
+                // Adiciona a classe 'active' ao botão clicado
+                event.target.classList.add('active');
+
+                const filtro = event.target.getAttribute('data-filter');
+
+                galeriaItems.forEach(item => {
+                    // Adiciona uma animação suave
+                    item.style.transition = 'opacity 0.3s, transform 0.3s';
+                    if (filtro === 'all' || item.classList.contains(filtro)) {
+                        item.style.display = 'flex'; // Mostra o item
+                        setTimeout(() => {
+                           item.style.opacity = '1';
+                           item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.9)';
+                        setTimeout(() => {
+                           item.style.display = 'none'; // Esconde o item depois da animação
+                        }, 300);
+                    }
+                });
+            }
+        });
+    }
+
     // --- LÓGICA DO CARRINHO DE COMPRAS (ATUALIZADA) ---
     const carrinho = {}; 
     const botoesAdicionar = document.querySelectorAll('.btn-add');
@@ -26,20 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função para mostrar feedback "Toast"
     function mostrarToast(mensagem) {
-        // Remove qualquer toast que já exista para não empilhar
         const toastExistente = document.querySelector('.toast');
         if (toastExistente) {
             toastExistente.remove();
         }
-
         const toast = document.createElement('div');
         toast.textContent = mensagem;
         toast.className = 'toast';
         document.body.appendChild(toast);
-
         setTimeout(() => {
             toast.remove();
-        }, 3000); // O toast some após 3 segundos
+        }, 3000);
     }
 
     // Função para redesenhar o carrinho na tela
@@ -48,31 +80,17 @@ document.addEventListener('DOMContentLoaded', () => {
         carrinhoItemsContainer.innerHTML = ''; 
         let total = 0;
         let totalItens = 0;
-
         for (const id in carrinho) {
             const item = carrinho[id];
             total += item.preco * item.qtd;
             totalItens += item.qtd;
-
             const itemDiv = document.createElement('div');
             itemDiv.classList.add('carrinho-item');
-            itemDiv.innerHTML = `
-                <span>${item.qtd}x ${item.nome}</span>
-                <span>
-                    R$ ${(item.preco * item.qtd).toFixed(2).replace('.', ',')}
-                    <button class="btn-remover" data-id="${id}" title="Remover item">✖</button>
-                </span>
-            `;
+            itemDiv.innerHTML = `<span>${item.qtd}x ${item.nome}</span><span>R$ ${(item.preco * item.qtd).toFixed(2).replace('.', ',')}<button class="btn-remover" data-id="${id}" title="Remover item">✖</button></span>`;
             carrinhoItemsContainer.appendChild(itemDiv);
         }
-
-        if (carrinhoVazioEl) {
-            carrinhoVazioEl.style.display = totalItens > 0 ? 'none' : 'block';
-        }
-        
+        if(carrinhoVazioEl) carrinhoVazioEl.style.display = totalItens > 0 ? 'none' : 'block';
         carrinhoTotalEl.textContent = total.toFixed(2).replace('.', ',');
-        
-        // Atualiza o botão flutuante
         if (carrinhoFlutuanteBtn) {
             if (totalItens > 0) {
                 carrinhoFlutuanteBtn.textContent = `🛒 Carrinho (${totalItens})`;
@@ -89,19 +107,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const id = botao.dataset.id;
             const nome = botao.dataset.nome;
             const preco = parseFloat(botao.dataset.preco);
-
             if (carrinho[id]) {
                 carrinho[id].qtd++;
             } else {
                 carrinho[id] = { nome, preco, qtd: 1 };
             }
-            
             mostrarToast(`${nome} adicionado ao carrinho!`);
             atualizarCarrinho();
         });
     });
 
-    // Adiciona evento para remover itens (usando delegação de evento)
+    // Adiciona evento para remover itens
     if (carrinhoItemsContainer) {
         carrinhoItemsContainer.addEventListener('click', (event) => {
             if (event.target.classList.contains('btn-remover')) {
@@ -143,36 +159,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if(modalFechar) { modalFechar.addEventListener('click', fecharModal); }
     if(modal) { modal.addEventListener('click', (e) => { if(e.target === modal) { fecharModal(); } }); }
     
-    // Lógica de envio dos formulários
     async function handleFormSubmit(event, form) {
         event.preventDefault();
         const formData = new FormData(form);
         const submitButton = form.querySelector('button[type="submit"]');
-        submitButton.disabled = true; // Desabilita o botão para evitar envios duplos
-        submitButton.textContent = 'A Enviar...';
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...';
 
         try {
             const response = await fetch(form.action, {
                 method: 'POST',
                 body: new URLSearchParams(formData)
             });
+            const responseData = await response.json();
 
             if (response.ok) {
                 const isPedido = form.classList.contains('form-pedido');
                 if (isPedido) {
-                    abrirModal('Pedido Enviado!', 'O seu pedido foi enviado para a cafetaria. Iremos analisá-lo e entraremos em contacto via WhatsApp para confirmar a retirada.');
+                    abrirModal('Pedido Enviado!', 'Seu pedido foi enviado para a cafeteria. Iremos analisá-lo e entraremos em contato via WhatsApp para confirmar a retirada.');
                     for (const id in carrinho) { delete carrinho[id]; }
                     atualizarCarrinho();
                 } else {
-                    abrirModal('Solicitação Recebida!', 'A sua solicitação de reserva foi enviada. Iremos analisar a disponibilidade e entraremos em contacto via WhatsApp para confirmar.');
+                    abrirModal('Solicitação Recebida!', 'Sua solicitação de reserva foi enviada. Iremos analisar a disponibilidade e entraremos em contato via WhatsApp para confirmar.');
                 }
                 form.reset();
             } else {
-                const errorData = await response.json();
-                abrirModal('Ops! Algo deu errado', errorData.message || 'Não foi possível completar a sua solicitação. Tente novamente.');
+                abrirModal('Ops! Algo deu errado', responseData.message || 'Não foi possível completar sua solicitação. Tente novamente.');
             }
         } catch (error) {
-            abrirModal('Erro de Conexão', 'Não foi possível ligar ao servidor. Verifique a sua internet e tente novamente.');
+            abrirModal('Erro de Conexão', 'Não foi possível conectar ao servidor. Verifique sua internet e tente novamente.');
         } finally {
             submitButton.disabled = false;
             submitButton.textContent = form.classList.contains('form-pedido') ? 'Enviar Pedido para Confirmação' : 'Solicitar Reserva';
@@ -185,7 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (formPedido) {
         formPedido.addEventListener('submit', (e) => {
-            // Preenche os campos escondidos do carrinho antes de enviar
             const itensPedidoInput = document.getElementById('itens-pedido');
             const totalPedidoInput = document.getElementById('total-pedido');
             let itensTexto = '';
