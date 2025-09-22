@@ -19,8 +19,8 @@
                 <li class="nav-item"><a href="#galeria" class="nav-link">Menu & Galeria</a></li>
                 <li class="nav-item"><a href="#pedido" class="nav-link">Pedido para Retirada</a></li>
                 <li class="nav-item"><a href="#reservas" class="nav-link">Reservas</a></li>
-                <li class="nav-item"><a href="#sobre" class="nav-link">Nossa História</a></li>
-                <li class="nav-item"><a href="#contato" class="nav-link">Contato</a></li>
+                <li class="nav-item"><a href="#sobre" class="nav-link">A Nossa História</a></li>
+                <li class="nav-item"><a href="#contato" class="nav-link">Contacto</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span><span class="bar"></span><span class="bar"></span>
@@ -32,8 +32,8 @@
         <!-- SEÇÃO INÍCIO -->
         <section id="inicio" class="hero">
             <div class="hero-text">
-                <h1>Seu cantinho de paz, com sabor de casa.</h1>
-                <p>O melhor café, as melhores memórias. Venha nos visitar ou faça seu pedido para retirada.</p>
+                <h1>O seu cantinho de paz, com sabor de casa.</h1>
+                <p>O melhor café, as melhores memórias. Visite-nos ou faça o seu pedido para retirada.</p>
                 <a href="#galeria" class="btn">Ver Menu & Galeria</a>
             </div>
         </section>
@@ -47,7 +47,7 @@
             <h3 class="categoria-titulo">Cafés Especiais</h3>
             <div class="cardapio-container">
                 <div class="cardapio-item">
-                    <img src="images/espresso.jpg.jpg" alt="Café Espresso">
+                    <img src="images/espresso.jpg" alt="Café Espresso">
                     <h3>Espresso Tradicional</h3>
                     <p>O puro sabor do café italiano, forte e aromático.</p>
                     <div class="item-compra">
@@ -107,12 +107,12 @@
             <h3 class="categoria-titulo">Bebidas</h3>
             <div class="cardapio-container">
                 <div class="cardapio-item">
-                    <img src="images/sucolaranja.jpg" alt="Suco de Laranja">
-                    <h3>Suco de Laranja Natural</h3>
+                    <img src="images/sucolaranja.jpg" alt="Sumo de Laranja">
+                    <h3>Sumo de Laranja Natural</h3>
                     <p>Feito com laranjas frescas, espremidas na hora.</p>
                     <div class="item-compra">
                         <span class="preco">R$ 8,00</span>
-                        <button class="btn-add" data-id="6" data-nome="Suco de Laranja" data-preco="8.00">Adicionar</button>
+                        <button class="btn-add" data-id="6" data-nome="Sumo de Laranja" data-preco="8.00">Adicionar</button>
                     </div>
                 </div>
                  <div class="cardapio-item">
@@ -133,21 +133,21 @@
             <p class="section-subtitle">Selecione os seus itens na galeria e finalize o seu pedido aqui.</p>
             
             <div class="carrinho-container">
-                <h3>Seu Carrinho</h3>
+                <h3>O Seu Carrinho</h3>
                 <div id="carrinho-items">
-                    <p class="carrinho-vazio">Seu carrinho está vazio.</p>
+                    <p class="carrinho-vazio">O seu carrinho está vazio.</p>
                 </div>
                 <div class="carrinho-total">
-                    <strong>Total: R$ <span id="carrinho-total-valor">0.00</span></strong>
+                    <strong>Total: R$ <span id="carrinho-total-valor">0,00</span></strong>
                 </div>
             </div>
 
             <form action="https://nonnanitta.onrender.com/pedidos" method="POST" class="form-pedido">
-                <h3>Seus Dados para Retirada</h3>
-                <label for="nome-pedido">Seu Nome:</label>
+                <h3>Os Seus Dados para Retirada</h3>
+                <label for="nome-pedido">O Seu Nome:</label>
                 <input type="text" id="nome-pedido" name="Nome" required>
                 <label for="telefone-pedido">Telefone (WhatsApp):</label>
-                <input type="text" id="telefone-pedido" name="Telefone" required>
+                <input type="tel" id="telefone-pedido" name="Telefone" required>
                 <input type="hidden" id="itens-pedido" name="Itens do Pedido">
                 <input type="hidden" id="total-pedido" name="Total do Pedido">
                 <button type="submit" class="btn">Enviar Pedido para Confirmação</button>
@@ -159,13 +159,10 @@
         <section id="reservas" class="section-padding">
             <h2>Faça a Sua Reserva</h2>
             <p class="section-subtitle">Garanta o seu lugar e aproveite a Nonnanitta sem preocupações.</p>
-            <p class="aviso-confirmacao">
-                <strong>Atenção:</strong> A sua reserva está <strong>sujeita a confirmação</strong>. A nossa equipa verificará a disponibilidade e entrará em contacto.
-            </p>
             <form action="https://nonnanitta.onrender.com/reservas" method="POST" class="form-reserva">
-                <label for="nome-reserva">Seu Nome:</label>
+                <label for="nome-reserva">O Seu Nome:</label>
                 <input type="text" id="nome-reserva" name="Nome" required>
-                <label for="email-reserva">Seu E-mail:</label>
+                <label for="email-reserva">O Seu E-mail:</label>
                 <input type="email" id="email-reserva" name="Email" required>
                 <label for="telefone-reserva">Telefone (WhatsApp):</label>
                 <input type="tel" id="telefone-reserva" name="Telefone" placeholder="(XX) XXXXX-XXXX" required>
@@ -188,35 +185,27 @@
                 <img src="images/fundodocafe.jpg" alt="Detalhe do ambiente da cafetaria">
             </div>
             <div class="sobre-texto">
-                <h2>Nossa História</h2>
+                <h2>A Nossa História</h2>
                 <p>Nascida do sonho da Vó Nitta em partilhar o sabor da sua infância na Itália, a Nonnanitta é mais que um café, somos um lar. Cada receita carrega uma história, cada xícara é um abraço.</p>
             </div>
         </section>
         
-        <!-- SEÇÃO CONTATO (ATUALIZADA) -->
+        <!-- SEÇÃO CONTATO -->
         <section id="contato" class="section-padding">
             <h2>Encontre-nos</h2>
             <p class="section-subtitle">A sua próxima xícara espera por si.</p>
             <div class="contato-container">
                 <div class="contato-imagem">
-                    <img src="images/fachada.jpg" alt="Fachada da Cafeteria Nonnanitta">
+                    <img src="images/fachada.jpg" alt="Fachada da cafetaria Nonnanitta">
                 </div>
-                <div class="contato-mapa-info">
+                <div class="contato-detalhes">
                     <div class="contato-info">
                         <p><strong>Endereço:</strong> Rua Tiradentes, 323 - Centro, Campo Belo</p>
                         <p><strong>Telefone:</strong> (35) 99999-8888</p>
                         <p><strong>Horário:</strong> De Segunda a Domingo, das 14:30h às 20h</p>
                     </div>
-                    <div class="mapa-wrapper">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3704.13112128788!2d-45.27582238453488!3d-21.81363998557929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b4cb423a072089%3A0x831a2c3a5e8f5b8c!2sR.%20Tiradentes%2C%20323%20-%20Centro%2C%20Campo%20Belo%20-%20MG%2C%2037270-000!5e0!3m2!1spt-BR!2sbr!4v1663788573151!5m2!1spt-BR!2sbr" 
-                            width="100%" 
-                            height="300" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+                    <div class="mapa-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3704.292997298583!2d-45.2785536855731!3d-21.80802098558237!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b45b0f0a0a0a0b%3A0x0a0a0a0a0a0a0a0a!2sRua%20Tiradentes%2C%20323%20-%20Centro%2C%20Campo%20Belo%20-%20MG%2C%2037270-000%2C%20Brasil!5e0!3m2!1spt-PT!2spt!4v1663789123456!5m2!1spt-PT!2spt" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
