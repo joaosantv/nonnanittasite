@@ -89,7 +89,6 @@ header {
     align-items: center;
     text-align: center;
     color: white;
-    /* A MUDANÇA ESTÁ AQUI 👇 */
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/fundocafeteria.jpg') no-repeat center center/cover;
 }
 
